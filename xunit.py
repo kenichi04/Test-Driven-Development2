@@ -22,7 +22,8 @@ class TestCase:
         try:
             method = getattr(self, self.name)
             method()
-        except:
+        except Exception as e:
+            print(e)
             result.testFailed()
         self.tearDown()
 
@@ -79,7 +80,7 @@ suite.add(TestCaseTest('testTemplateMethod'))
 suite.add(TestCaseTest('testResult'))
 suite.add(TestCaseTest('testFailedResult'))
 suite.add(TestCaseTest('testFailedResultFormatting'))
-suite.add(TestCase('testSuite'))
+suite.add(TestCaseTest('testSuite'))
 result = TestResult()
 suite.run(result)
 print(result.summary())
